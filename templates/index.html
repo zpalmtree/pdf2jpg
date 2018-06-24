@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PDF2JPG &middot; Convert PDF's to JPG</title>
+        <link rel="stylesheet" href="../static/pomf.css">
+        <link rel="stylesheet" href="../static/toggle.css">
+    </head>
+    <body>
+        <div class="container">
+        <div class="menu">
+            <div class="jumbotron">
+                <h1>Ohayou!</h1>
+                <p class="lead">Max upload size is 512M.</p>
+                <noscript>
+                    <p class="alert alert-error"><strong>You need JavaScript enabled to use this service.</strong></p>
+                </noscript>
+                <p id="no-file-api" class="alert alert-error">
+                    <strong>Your browser is too old.</strong> Install the latest <a href="http://firefox.com/">Firefox</a> or <a href="http://chrome.google.com/">Botnet</a> and come back &lt;3
+                </p>
+                <button id="upload-btn" class="btn" type="button">Select or drop file(s)</button>
+                <input type="file" id="upload-input" name="files[]" multiple data-max-size="512MiB">
+                <ul id="upload-filelist"></ul>
+                <br><br><br>
+                <label class="switch">
+                    <input type="checkbox" name="multipleFiles">
+                    <span class="slider round"></span>
+                    Combine PDF into one large image?
+                </label>
+                <br><br><br>
+                <!-->
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                      <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+                {% block body %}{% endblock %}
+                <!-->
+            </div>
+            <script src="../static/clipboard.js"></script>
+            <script>
+            var clipboard;
+            </script>
+            <script src="../static/zepto.js"></script>
+            <script src="../static/cheesesteak.js"></script>
+            <script src="../static/cabinet.js"></script>
+            <script src="../static/pomf.js"></script>
+        </div>
+    </body>
+</html>
